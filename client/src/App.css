@@ -35,7 +35,7 @@ body {
   color: white;
 }
 
-li {
+.nav-item {
   font-family: 'Bungee Inline', cursive;
   font-weight: bolder;
   font-size: 18px;
@@ -44,6 +44,22 @@ li {
 
 .nav-link:hover {
   color: #910505;
+}
+
+.loginButton {
+  font-family: 'Bungee Inline', cursive;
+  font-weight: bolder;
+  font-size: 18px;
+  color: white;
+  background-image: linear-gradient(to bottom, #111111 10%, #e4652ae5 70%);
+}
+
+.loginButton:hover {
+  color: #910505;
+}
+
+.howItWorks {
+  list-style-type: none;
 }
 
 
