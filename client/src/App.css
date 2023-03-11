@@ -2,37 +2,58 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navbar {
+  margin: 40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navbar-brand {
+  /* Rubik Vinyl is another interesting font for the title */
+  font-family: 'Vast Shadow', cursive;
+  font-weight: bolder;
+  font-size: 50px;
+  margin: 20px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar-brand:hover {
+  color: #910505;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.nav-link {
+  color: white;
+}
+
+.nav-link:hover {
+  color: #910505;
+}
+
+body {
+  background-image: linear-gradient(to bottom, #000000 15%,  #492106 20%, #a74402 40%, #fff 90%);
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family:Impact, Haettenschweiler, sans-serif;
+  color: white;
+}
+
+li {
+  font-family: 'Bungee Inline', cursive;
+  font-weight: bolder;
+  font-size: 18px;
+  background-image: linear-gradient(to bottom, #111111d8 20%, #f800004f 70%);
+}
+
+.nav-link:hover {
+  color: #910505;
+}
+
+
+/* Adding custom media query for font size in nav bar at smaller resolutions */
+@media screen and (max-width:500px) {
+  .navbar-brand {
+    font-size: 24px;
   }
-  to {
-    transform: rotate(360deg);
+
+  li {
+    font-size: 14px;
   }
 }
