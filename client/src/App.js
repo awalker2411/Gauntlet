@@ -4,6 +4,7 @@ import Home from './components/pages/Home';
 import Profile from './components/pages/Profile';
 import Arena from './components/pages/Arena';
 import About from './components/pages/About';
+import Navbar from './components/Navbar';
 import './App.css';
 
 function App() {
@@ -12,7 +13,10 @@ function App() {
       <Router>
 
         <Routes>
-          <Route path="/" element={<AppContainer />}>
+          <Route path="/" element={<>
+            <Navbar/>
+          <AppContainer />
+          </>}>
             <Route index element={<Home />} />
             <Route path="/Arena" element={<Arena />} />
             <Route path="/Profile" element={<Profile />} />
