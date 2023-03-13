@@ -11,18 +11,30 @@ export default function NewUserModal() {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <Button 
+            variant="primary" 
+            onClick={handleShow}
+            className="loginBtn btn-secondary"
+            >
                 Login / Signup
             </Button>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal heading</Modal.Title>
+                    <Modal.Title
+                        style={{ color: 'black' }}
+                    >
+                        Log In
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
-                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                            <Form.Label>Email address</Form.Label>
+                        <Form.Group className="mb-3" id="emailInput">
+                            <Form.Label
+                            style={{ color: 'black' }}
+                            >
+                                Email address
+                                </Form.Label>
                             <Form.Control
                                 type="email"
                                 placeholder="name@example.com"
@@ -31,10 +43,14 @@ export default function NewUserModal() {
                         </Form.Group>
                         <Form.Group
                             className="mb-3"
-                            controlId="exampleForm.ControlTextarea1"
+                            id="passwordInput"
                         >
-                            <Form.Label>Example textarea</Form.Label>
-                            <Form.Control as="textarea" rows={3} />
+                            <Form.Label
+                            style={{ color: 'black' }}
+                            >
+                                Password
+                            </Form.Label>
+                            <Form.Control type="password" rows={3} />
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -42,8 +58,8 @@ export default function NewUserModal() {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        Save Changes
+                    <Button variant="primary" onClick={handleClose} id="loginBtn">
+                        Login
                     </Button>
                 </Modal.Footer>
             </Modal>

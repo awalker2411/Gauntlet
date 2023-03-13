@@ -28,44 +28,59 @@
 }
 
 body {
-  background-image: linear-gradient(to bottom, #000000 15%,  #492106 20%, #a74402 40%, #fff 90%);
+  background-image: url('../src/assets/images/newEraBegins.jpg');
   background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
   font-family:Impact, Haettenschweiler, sans-serif;
-  color: white;
+  color: #e41010e5;
+  background-color: black;
 }
 
 .nav-item {
   font-family: 'Bungee Inline', cursive;
   font-weight: bolder;
   font-size: 18px;
-  background-image: linear-gradient(to bottom, #111111d8 20%, #f800004f 70%);
+  background-image: linear-gradient(to bottom, #111111d8 20%, #f8000033 70%);
 }
 
 .nav-link:hover {
   color: #910505;
 }
 
-.loginButton {
+.loginBtn {
   font-family: 'Bungee Inline', cursive;
   font-weight: bolder;
   font-size: 18px;
   color: white;
-  background-image: linear-gradient(to bottom, #111111 10%, #e4652ae5 70%);
+  background-image: linear-gradient(to bottom, #111111 50%, #e41010e5 100%);
 }
 
-.loginButton:hover {
+.loginBtn:hover {
   color: #910505;
 }
 
 .howItWorks {
-  background-image: linear-gradient(to bottom, #181818ce 10%, #922d01e5 70%);
+  background-image: linear-gradient(to bottom, #111111 30%, #e41010d8 70%);
+}
+
+.tutorial {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .tutorialLine {
   color: white;
 }
 
+
+@media screen and (max-width:750px) {
+  .howItWorks {
+    width: 90%;
+  }
+}
 
 /* Adding custom media query for font size in nav bar at smaller resolutions */
 @media screen and (max-width:500px) {
