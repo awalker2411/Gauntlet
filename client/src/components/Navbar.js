@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import FireNav from '../assets/animations/fireNav.mp4'
+import FireNav2 from '../assets/animations/fireNav2.mp4'
 const pages = ['Home', 'Profile', 'Gauntlet', 'About' ];
 
 export default function Navbar() {
@@ -35,7 +35,7 @@ export default function Navbar() {
                         zIndex: "-1"
                     }}
                     >
-                        <source src={FireNav} type="video/mp4"/>
+                        <source src={FireNav2} type="video/mp4"/>
                         </video>
                     
                     <a className="navbar-brand" href="/">Gauntlet</a>

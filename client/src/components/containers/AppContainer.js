@@ -5,7 +5,7 @@ import Navbar from '../Navbar';
 export default function AppContainer() {
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
             <Outlet />
             {/* <Footer /> */}
         </>

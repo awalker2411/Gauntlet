@@ -59,7 +59,11 @@ body {
 }
 
 .howItWorks {
-  list-style-type: none;
+  background-image: linear-gradient(to bottom, #181818ce 10%, #922d01e5 70%);
+}
+
+.tutorialLine {
+  color: white;
 }
 
 
@@ -72,4 +76,5 @@ body {
   li {
     font-size: 14px;
   }
+
 }
