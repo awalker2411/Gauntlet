@@ -1,4 +1,5 @@
 import CharacterCarousel from '../data/Characters';
+import CreateCharacter from '../modals/CreateCharacter';
 
 function UncontrolledExample() {
     return (
@@ -6,6 +7,7 @@ function UncontrolledExample() {
             <h3>
                 Welcome to your profile, Chris!
             </h3>
+            <CreateCharacter/>
             <main
                 style={{
                     display: 'flex',
@@ -16,9 +18,9 @@ function UncontrolledExample() {
                 }}
             >
                 <p className='profileDescription'>
-                    Select your character to send into the Arena. Once you have selected a character, we'll show you the base stats of that user, along with the results from the most recent Arena match! 
+                    Below, you can view the stats from your most recent Arena match!
                 </p>
-                <CharacterCarousel/>
+                {/* <CharacterCarousel/> */}
             </main>
         </>
     );
