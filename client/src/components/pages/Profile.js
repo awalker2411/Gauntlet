@@ -1,24 +1,27 @@
-import Figure from 'react-bootstrap/Figure';
-import Brute from '../../assets/images/characters/Brute.png'
+import CharacterCarousel from '../data/Characters';
 
-function FigureExample() {
+function UncontrolledExample() {
     return (
-        <Figure>
-            <Figure.Caption
+        <>
+            <h3>
+                Welcome to your profile, Chris!
+            </h3>
+            <main
                 style={{
-                    color: 'white'
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    flexDirection: 'column',
+                    marginTop: 100,
                 }}
             >
-                Brute
-            </Figure.Caption>
-            <Figure.Image
-                width={500}
-                height={180}
-                alt="500x180"
-                src={Brute}
-            />
-        </Figure>
+                <p className='profileDescription'>
+                    Select your character to send into the Arena. Once you have selected a character, we'll show you the base stats of that user, along with the results from the most recent Arena match! 
+                </p>
+                <CharacterCarousel/>
+            </main>
+        </>
     );
 }
 
-export default FigureExample;
+export default UncontrolledExample;

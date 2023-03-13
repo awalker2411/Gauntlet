@@ -7,11 +7,11 @@ export default function Home() {
 
     return (
         <main>
+            <h2 className="mx-5 mb-5">
+                Welcome to Gauntlet, where we've developed an in-browser gaming experience!
+            </h2>
             <NewUserModal />
 
-            <h2 className='mt-5'>
-                Welcome to Gauntlet, an in-browser gaming experience!
-            </h2>
 
             <div
                 className="tutorial"
@@ -28,7 +28,7 @@ export default function Home() {
                     }}>
 
                     <h3
-                        style={{ color: 'white' }}
+                        style={{ color: '#910505' }}
                         className="card-header btn-primary">
                         How it works:
                     </h3>
@@ -49,17 +49,18 @@ export default function Home() {
                     </article>
                 </section>
                 <Figure>
+                    <Figure.Caption
+                        className="textCard mx-5"
+                        style={{ color: '#3ae410e5', fontSize: 24, marginTop: 50 }}
+                    >
+                        Choose one of these characters and see how many waves of enemies you can defeat!
+                    </Figure.Caption>
                     <Figure.Image
                         width={500}
                         height={180}
                         alt="500x180"
                         src={CharacterGif}
                     />
-                    <Figure.Caption
-                        style={{ color: '#e41010e5', fontSize: 24}}
-                    >
-                        Choose one of these characters and see how many waves of enemies you can defeat!
-                    </Figure.Caption>
                 </Figure>
             </div>
         </main>
