@@ -3,7 +3,7 @@
 }
 
 .navbar {
-  margin: 40px;
+  margin: 40px 40px 0px 40px;
 }
 
 .navbar-brand {
@@ -33,7 +33,7 @@ body {
   background-size: cover;
   height: 100vh;
   font-family:Impact, Haettenschweiler, sans-serif;
-  color: #e41010e5;
+  color: #3ae410e5;
   background-color: black;
 }
 
@@ -60,6 +60,19 @@ body {
   color: #910505;
 }
 
+h2 {
+  background-color: rgb(27, 26, 26);
+}
+
+.textCard {
+  display: flex;
+  justify-content: center;
+  margin: 20px 20px 0px 40px;
+  background-color: rgb(27, 26, 26);
+  color: #3ae410e5;
+  font-size: 24px;
+}
+
 .howItWorks {
   background-image: linear-gradient(to bottom, #111111 30%, #e41010d8 70%);
 }
@@ -73,6 +86,30 @@ body {
 
 .tutorialLine {
   color: white;
+}
+
+/* Start of custom CSS for Profile page */
+h3 {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 40px;
+}
+
+.profileDescription {
+  background-color: #111111;
+  width: 30%;
+  margin: 20px 40px 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px
+}
+
+.carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10%;
 }
 
 
