@@ -2,9 +2,13 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../../utils/mutations';
+import AuthService from '../../utils/auth'
 
 export default function NewUserModal() {
     const [show, setShow] = useState(false);
+    const [loginUser, {error}] = useMutation(LOGIN_USER)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -25,6 +29,11 @@ export default function NewUserModal() {
                         style={{ color: 'black' }}
                     >
                         Log In
+                    </Modal.Title>
+                    <Modal.Title
+                        className="d-none" style={{ color: 'black' }}
+                    >
+                        Sign Up
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -60,6 +69,9 @@ export default function NewUserModal() {
                     </Button>
                     <Button variant="primary" onClick={handleClose} id="loginBtn">
                         Login
+                    </Button>
+                    <Button className="d-none" variant="primary" onClick={handleClose} id="signupBtn">
+                        Sign Up
                     </Button>
                 </Modal.Footer>
             </Modal>
