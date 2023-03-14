@@ -14,20 +14,25 @@ export default function About() {
                 </h2>
                 <Row className="arena">
                     <Col xs={6}>
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '18rem', backgroundColor: 'black' }}>
                             <Card.Img variant="top" src={Chris} />
                             <Card.Body>
-                                <Card.Title>Card Title</Card.Title>
+                                <Card.Title>Chris Simmonds</Card.Title>
                                 <Card.Text>
-                                    Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.
+                                    Full Stack Web Developer. I enjoyed partnering up with Mr. Walker on creating this game. I mostly handled the front-end of this application. It's always exciting to see a concept come to fruition and interact with the code you've developed!
+                                    <br/><br/>
+                                    Check out my Github to see additional projects.
                                 </Card.Text>
-                                <Button variant="primary">Github Profile</Button>
+                                <Button className="Btn" variant="primary">
+                                    <a target="_blank" href="https://github.com/Christoph551">
+                                        Github Profile
+                                    </a>
+                                </Button>
                             </Card.Body>
                         </Card>
                     </Col>
                     <Col xs={6}>
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '18rem', backgroundColor: 'black' }}>
                             <Card.Img variant="top" src="holder.js/100px180" />
                             <Card.Body>
                                 <Card.Title>Card Title</Card.Title>
@@ -35,7 +40,11 @@ export default function About() {
                                     Some quick example text to build on the card title and make up the
                                     bulk of the card's content.
                                 </Card.Text>
-                                <Button variant="primary">Github Profile</Button>
+                                <Button className="Btn" variant="primary">
+                                    <a target="_blank" href="https://github.com/awalker2411">
+                                        Github Profile
+                                    </a>
+                                </Button>
                             </Card.Body>
                         </Card>
                     </Col>
