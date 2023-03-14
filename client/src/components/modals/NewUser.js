@@ -8,7 +8,7 @@ import AuthService from '../../utils/auth'
 
 export default function NewUserModal() {
     const [show, setShow] = useState(false);
-    const [loginUser, {error}] = useMutation(LOGIN_USER)
+    // const [loginUser, {error}] = useMutation(LOGIN_USER)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);

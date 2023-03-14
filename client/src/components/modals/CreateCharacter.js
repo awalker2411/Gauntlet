@@ -9,7 +9,7 @@ export default function CreateCharacter() {
     return (
         <>
             {/* This button will need to be connected to the submit button from when a user signs up for a new account */}
-            <Button onClick={() => setLgShow(true)} className="loginBtn btn-secondary">Create New Character</Button>
+            <Button onClick={() => setLgShow(true)} className="Btn btn-secondary">Create New Character</Button>
             <Modal
                 size="lg"
                 show={lgShow}
@@ -49,7 +49,7 @@ export default function CreateCharacter() {
                             </p>
                         </article>
                         <Button
-                            className="loginBtn btn-secondary"
+                            className="Btn btn-secondary"
                         >
                             Confirm Selection
                         </Button>

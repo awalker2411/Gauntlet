@@ -16,7 +16,7 @@ export default function Gauntlet() {
                 Welcome to the Arena
             </h2>
             <Dropdown>
-                <Dropdown.Toggle className="loginBtn" id="dropdown-button-dark-example1" variant="secondary">
+                <Dropdown.Toggle className="Btn" id="dropdown-button-dark-example1" variant="secondary">
                     Select a character to send to the Arena
                 </Dropdown.Toggle>
 
@@ -59,7 +59,7 @@ export default function Gauntlet() {
             <Button 
             variant="primary" 
             // onClick={startBattle}
-            className="loginBtn btn-secondary"
+            className="Btn btn-secondary"
             >
                 Begin Battle
             </Button>

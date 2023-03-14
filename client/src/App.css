@@ -15,6 +15,15 @@
   color: white;
 }
 
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color:#910505;
+}
+
 .navbar-brand:hover {
   color: #910505;
 }
@@ -48,7 +57,7 @@ body {
   color: #910505;
 }
 
-.loginBtn {
+.Btn {
   font-family: 'Bungee Inline', cursive;
   font-weight: bolder;
   font-size: 18px;
@@ -56,7 +65,7 @@ body {
   background-image: linear-gradient(to bottom, #111111 50%, #e41010e5 100%);
 }
 
-.loginBtn:hover {
+.Btn:hover {
   color: #910505;
 }
 
