@@ -62,10 +62,10 @@ export default function CharacterCarousel() {
                         src={item.image}
                         alt={item.description}
                     />
-                    <Carousel.Caption>
+                    {/* <Carousel.Caption>
                         <h3>{item.name}</h3>
                         <p>{item.description}</p>
-                    </Carousel.Caption>
+                    </Carousel.Caption> */}
                 </Carousel.Item>
             ))}
         </Carousel>

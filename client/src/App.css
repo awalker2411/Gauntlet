@@ -95,6 +95,17 @@ h3 {
   margin-left: 40px;
 }
 
+.prevBattle {
+  display: flex;
+  justify-content: center;
+}
+
+.stats {
+  background-color: #111111;
+  border-radius: 5px;
+
+}
+
 .profileDescription {
   background-color: #111111;
   width: 30%;
@@ -102,7 +113,7 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px
+  font-size: 30px;
 }
 
 .carousel {
@@ -112,10 +123,26 @@ h3 {
   border-radius: 10%;
 }
 
+/* Character creation modal */
+.charPar {
+  font-size: 12px;
+}
+
+/* Arena Page */
+.arena {
+  margin: 50px;
+}
+
+
+
 
 @media screen and (max-width:750px) {
   .howItWorks {
     width: 90%;
+  }
+
+  .profileDescription {
+    font-size: 22px;
   }
 }
 
@@ -129,4 +156,7 @@ h3 {
     font-size: 14px;
   }
 
+  .profileDescription {
+    font-size: 18px;
+  }
 }

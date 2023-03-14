@@ -38,7 +38,7 @@ export default function Home() {
                             First, create an account if you don't have one already.
                         </p>
                         <p className="tutorialLine">
-                            You'll be able to select one of 6 champions, each with their own base stats.
+                            You'll be able to select one of 6 characters, each with their own base stats.
                         </p>
                         <p className="tutorialLine">
                             Once you've selected a character, you can enter the Arena to see how many waves of enemies your champion can take on.
