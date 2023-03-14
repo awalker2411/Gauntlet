@@ -20,18 +20,18 @@ export default function NewUserModal() {
             </Button>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
+                <Modal.Header style={{ backgroundColor: 'black' }} closeButton>
                     <Modal.Title
-                        style={{ color: 'black' }}
+                        style={{ color: '#3ae410e5' }}
                     >
                         Log In
                     </Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body style={{ backgroundColor: 'black' }}>
                     <Form>
                         <Form.Group className="mb-3" id="emailInput">
                             <Form.Label
-                            style={{ color: 'black' }}
+                            style={{ color: '#3ae410e5' }}
                             >
                                 Email address
                                 </Form.Label>
@@ -46,7 +46,7 @@ export default function NewUserModal() {
                             id="passwordInput"
                         >
                             <Form.Label
-                            style={{ color: 'black' }}
+                            style={{ color: '#3ae410e5' }}
                             >
                                 Password
                             </Form.Label>
@@ -54,11 +54,11 @@ export default function NewUserModal() {
                         </Form.Group>
                     </Form>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
+                <Modal.Footer style={{ backgroundColor: 'black' }}>
+                    <Button variant="secondary" onClick={handleClose} className="loginBtn btn-secondary">
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose} id="loginBtn">
+                    <Button variant="primary" onClick={handleClose} id="loginBtn" className="loginBtn btn-secondary">
                         Login
                     </Button>
                 </Modal.Footer>
