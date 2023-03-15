@@ -7,7 +7,7 @@ import Brute from '../../assets/images/characters/Brute.png'
 import { useState } from 'react';
 
 
-function Profile({selectedIndex,img}) {
+function Profile({character}) {
     const [userStats, insertUserStats] = useState();
 
     return (
@@ -34,7 +34,7 @@ function Profile({selectedIndex,img}) {
                             marginTop: 50,
                         }}
                     >
-                        <img src={Brute}/>
+                        <img src={character.image} alt={character.name}/>
                     </Figure>
                     <h3 className='prevBattle'>
                         Previous Battle:
@@ -44,7 +44,7 @@ function Profile({selectedIndex,img}) {
                             <Col xs={6}>
                                 User Stats:
                                 <p className='userStats'>
-                                    {/* Health Points - {insertUserStats[selectedIndex].health} */}
+                                    Health Points - {character.health}
                                 </p>
                                 <p className='userStats'> 
                                     Attack Points - 

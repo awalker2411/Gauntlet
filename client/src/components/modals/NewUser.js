@@ -7,7 +7,7 @@ import { LOGIN_USER } from '../../utils/mutations';
 import AuthService from '../../utils/auth'
 
 export default function NewUserModal() {
-    const [userFormData, setUserFormData] = useState({email: '', password: ''})
+    const [userFormData, setUserFormData] = useState({ email: '', password: '' })
     const [validated] = useState(false)
     const [show, setShow] = useState(false);
     // const [loginUser, {error}] = useMutation(LOGIN_USER)
@@ -15,23 +15,23 @@ export default function NewUserModal() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const handleLogin = (event) =>{
+    const handleLogin = (event) => {
         event.preventDefault()
         const form = event.currentTarget
         if (form.checkValidity)
-        handleClose()
+            handleClose()
     }
-    
-    const handleSignup = () =>{
+
+    const handleSignup = () => {
         handleClose()
     }
 
     return (
         <>
-            <Button 
-            variant="primary" 
-            onClick={handleShow}
-            className="Btn btn-secondary"
+            <Button
+                variant="primary"
+                onClick={handleShow}
+                className="Btn btn-secondary"
             >
                 Login / Signup
             </Button>
@@ -53,10 +53,10 @@ export default function NewUserModal() {
                     <Form>
                         <Form.Group className="mb-3" id="emailInput">
                             <Form.Label
-                            style={{ color: '#3ae410e5' }}
+                                style={{ color: '#3ae410e5' }}
                             >
                                 Email address
-                                </Form.Label>
+                            </Form.Label>
                             <Form.Control
                                 type="email"
                                 placeholder="name@example.com"
@@ -68,11 +68,18 @@ export default function NewUserModal() {
                             id="passwordInput"
                         >
                             <Form.Label
-                            style={{ color: '#3ae410e5' }}
+                                style={{ color: '#3ae410e5' }}
                             >
                                 Password
                             </Form.Label>
                             <Form.Control type="password" rows={3} />
+                            <Button variant="primary" onClick={handleClose} id="loginBtn" className="Btn btn-secondary">
+
+                                Login
+                            </Button>
+                            <Button className="d-none" variant="primary" onClick={handleSignup} id="signupBtn">
+                                Sign Up
+                            </Button>
                         </Form.Group>
                     </Form>
                 </Modal.Body>
@@ -81,13 +88,6 @@ export default function NewUserModal() {
                         Close
                     </Button>
 
-                    <Button variant="primary" onClick={handleClose} id="loginBtn" className="Btn btn-secondary">
-
-                        Login
-                    </Button>
-                    <Button className="d-none" variant="primary" onClick={handleSignup} id="signupBtn">
-                        Sign Up
-                    </Button>
                 </Modal.Footer>
             </Modal>
         </>
