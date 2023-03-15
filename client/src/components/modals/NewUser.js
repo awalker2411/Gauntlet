@@ -12,6 +12,11 @@ export default function NewUserModal() {
     const [userFormData, setUserFormData] = useState({ email: '', password: '' })
     const [signupFormData, setSignupFormData] = useState({username: ''})
     const usernameInputField = useRef(null)
+    const signupTitle = useRef(null)
+    const loginTitle = useRef(null)
+    const signBtn = useRef(null)
+    const logBtn = useRef(null)
+    const toggleBtn = useRef(null)
     const [validated] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
     const [show, setShow] = useState(false);
@@ -73,10 +78,19 @@ export default function NewUserModal() {
 
     const handleFormSubmit = async(event) => {
         if(usernameInputField.current.classList.contains('d-none')){
-        handleLogin()
+        handleLogin(event)
         }else{
-        handleSignUp()
+        handleSignUp(event)
         }
+    }
+
+    const toggleUsernameInput = () => {
+        usernameInputField.current.classList.remove('d-none')
+        signupTitle.current.classList.remove('d-none')
+        loginTitle.current.classList.add('d-none')
+        logBtn.current.classList.add('d-none')
+        signBtn.current.classList.remove('d-none')
+        toggleBtn.current.classList.add('d-none')
     }
 
 
@@ -95,11 +109,12 @@ export default function NewUserModal() {
                 <Modal.Header style={{ backgroundColor: 'black' }} closeButton>
                     <Modal.Title
                         style={{ color: '#3ae410e5' }}
+                        ref={loginTitle}
                     >
                         Log In
                     </Modal.Title>
                     <Modal.Title
-                        className="d-none" style={{ color: '#3ae410e5' }}
+                        className="d-none" ref={signupTitle} style={{ color: '#3ae410e5' }}
                     >
                         Sign Up
                     </Modal.Title>
@@ -144,11 +159,11 @@ export default function NewUserModal() {
                                 Password
                             </Form.Label>
                             <Form.Control type="password" rows={3} placeholder="Your Password" name="password" onChange={handleInputChange} value={userFormData.password} required/>
-                            <Button type="submit" variant="primary" id="loginBtn" className="Btn btn-secondary" disabled={!( userFormData.email && userFormData.password)}>
+                            <Button type="submit" variant="primary" id="loginBtn" className="Btn btn-secondary" disabled={!( userFormData.email && userFormData.password)} ref={logBtn}>
 
                                 Login
                             </Button>
-                            <Button type="submit" className="d-none" variant="primary" id="signupBtn" disabled={!( userFormData.email && userFormData.password)}>
+                            <Button type="submit" className="d-none Btn btn-secondary" variant="primary" id="signupBtn" disabled={!( userFormData.email && userFormData.password)} ref={signBtn}>
                                 Sign Up
                             </Button>
                         </Form.Group>
@@ -158,7 +173,9 @@ export default function NewUserModal() {
                     <Button variant="secondary" onClick={handleClose} className="Btn btn-secondary">
                         Close
                     </Button>
-
+                    <Button variant="secondary" onClick={toggleUsernameInput} className="Btn btn-secondary" ref={toggleBtn}>
+                        Sign Up instead?
+                    </Button>
                 </Modal.Footer>
             </Modal>
         </>
