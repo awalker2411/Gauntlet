@@ -12,8 +12,8 @@ export default function About() {
                 <h2>
                     About The Developers
                 </h2>
-                <Row className="arena">
-                    <Col xs={6}>
+                <Row>
+                    <Col xs={6} className='aboutDevs'>
                         <Card style={{ width: '18rem', backgroundColor: 'black' }}>
                             <Card.Img variant="top" src={Chris} />
                             <Card.Body>
@@ -23,7 +23,7 @@ export default function About() {
                                     <br/><br/>
                                     Check out my Github to see additional projects.
                                 </Card.Text>
-                                <Button className="Btn" variant="primary">
+                                <Button className="Btn btn-secondary" variant="primary">
                                     <a target="_blank" href="https://github.com/Christoph551">
                                         Github Profile
                                     </a>
@@ -31,7 +31,7 @@ export default function About() {
                             </Card.Body>
                         </Card>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={6} className='aboutDevs'>
                         <Card style={{ width: '18rem', backgroundColor: 'black' }}>
                             <Card.Img variant="top" src="holder.js/100px180" />
                             <Card.Body>
@@ -40,7 +40,7 @@ export default function About() {
                                     Some quick example text to build on the card title and make up the
                                     bulk of the card's content.
                                 </Card.Text>
-                                <Button className="Btn" variant="primary">
+                                <Button className="Btn btn-secondary">
                                     <a target="_blank" href="https://github.com/awalker2411">
                                         Github Profile
                                     </a>

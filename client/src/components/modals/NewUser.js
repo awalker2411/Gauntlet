@@ -31,7 +31,7 @@ export default function NewUserModal() {
             <Button 
             variant="primary" 
             onClick={handleShow}
-            className="loginBtn btn-secondary"
+            className="Btn btn-secondary"
             >
                 Login / Signup
             </Button>
@@ -44,7 +44,7 @@ export default function NewUserModal() {
                         Log In
                     </Modal.Title>
                     <Modal.Title
-                        className="d-none" style={{ color: 'black' }}
+                        className="d-none" style={{ color: '#3ae410e5' }}
                     >
                         Sign Up
                     </Modal.Title>
@@ -77,10 +77,12 @@ export default function NewUserModal() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer style={{ backgroundColor: 'black' }}>
-                    <Button variant="secondary" onClick={handleClose} className="loginBtn btn-secondary">
+                    <Button variant="secondary" onClick={handleClose} className="Btn btn-secondary">
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleLogin} id="loginBtn" className="loginBtn btn-secondary">
+
+                    <Button variant="primary" onClick={handleClose} id="loginBtn" className="Btn btn-secondary">
+
                         Login
                     </Button>
                     <Button className="d-none" variant="primary" onClick={handleSignup} id="signupBtn">

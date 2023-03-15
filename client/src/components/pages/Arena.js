@@ -6,10 +6,15 @@ import Figure from 'react-bootstrap/Figure';
 import Velnias from '../../assets/images/characters/Velnias.png';
 import Brute from '../../assets/images/characters/Brute.png';
 import Button from 'react-bootstrap/esm/Button';
+import Thud from '../../assets/sounds/thudSound.wav';
 
 
 export default function Gauntlet() {
-    
+
+    function play () {
+        new Audio(Thud).play();
+    }
+
     return (
         <Container>
             <h2>
@@ -17,7 +22,7 @@ export default function Gauntlet() {
             </h2>
             <Dropdown>
                 <Dropdown.Toggle className="Btn" id="dropdown-button-dark-example1" variant="secondary">
-                    Select a character to send to the Arena
+                    Character Select
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu variant="dark">
@@ -35,12 +40,9 @@ export default function Gauntlet() {
                 <Col xs={6}>
                     <Figure>
                         <img
-                            width={500}
-                            height={500}
-                            alt="500x300"
+                            
                             src={Brute}
                         />
-                        
                     </Figure>
                 </Col>
                 <Col
@@ -48,18 +50,16 @@ export default function Gauntlet() {
                     xs={6}>
                     <Figure>
                         <img
-                            width={700}
-                            height={475}
-                            alt="700x300"
-                            src={Velnias}
-                        />
+                            
+                            src={Velnias}/>
                     </Figure>
                 </Col>
             </Row>
-            <Button 
-            variant="primary" 
-            // onClick={startBattle}
-            className="Btn btn-secondary"
+            <Button
+            onClick={play}
+                variant="primary"
+                // onClick={startBattle}
+                className="Btn btn-secondary"
             >
                 Begin Battle
             </Button>
