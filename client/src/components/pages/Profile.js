@@ -3,12 +3,11 @@ import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Brute from '../../assets/images/characters/Brute.png'
 import { useState } from 'react';
 
 
-function Profile({character}) {
-    const [userStats, insertUserStats] = useState();
+function Profile({selectedIndex,img}) {
+    const [userStats, insertUserStats] = useState({});
 
     return (
         <>
@@ -25,16 +24,16 @@ function Profile({character}) {
                     marginTop: 50,
                 }}
             >
-                <p className='profileDescription'>
+                {/* <p className='profileDescription'>
                     Below, you can view the stats from your most recent Arena match!
-                </p>
-                <Container className='statsContainer'>
+                </p> */}
+                <Container id='statsContainer'>
                     <Figure className='container'
                         style={{
                             marginTop: 50,
                         }}
                     >
-                        <img src={character.image} alt={character.name}/>
+                        <img src={userStats.image}/>
                     </Figure>
                     <h3 className='prevBattle'>
                         Previous Battle:
@@ -44,16 +43,16 @@ function Profile({character}) {
                             <Col xs={6}>
                                 User Stats:
                                 <p className='userStats'>
-                                    Health Points - {character.health}
+                                    Health Points - {userStats.health}
                                 </p>
                                 <p className='userStats'> 
-                                    Attack Points - 
+                                    Attack Points - {userStats.attack}
                                 </p>
                                 <p className='userStats'>
-                                    Defense Points - 
+                                    Defense Points - {userStats.defense}
                                 </p>
                                 <p className='userStats'>
-                                    Speed Points - 
+                                    Speed Points - {userStats.speed}
                                 </p>
                             </Col>
                             <Col xs={6}>
