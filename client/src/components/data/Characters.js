@@ -46,7 +46,7 @@ export default function CharacterCarousel({index, handleSelect}) {
         <Carousel
             interval={null}
             activeIndex={index}
-            onSelect={handleSelect}
+            onSelect={(e) => handleSelect(e, characters[index].image)}
             style={{
                 width: 350,
                 backgroundColor: 'black',

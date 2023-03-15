@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import CharacterCarousel from '../data/Characters';
@@ -60,14 +60,17 @@ const characters = [
     },
 ];
 
-export default function CreateCharacter() {
+export default function CreateCharacter({insertUserStats}) {
     const [lgShow, setLgShow] = useState(false);
     const [charSelect, setCharSelect] = useState('');
     const [index, setIndex] = useState(0);
 
-    const handleSelect = (selectedIndex) => {
+    useEffect(() => setCharSelect(characters[index].description), [])
+
+    const handleSelect = (selectedIndex, img) => {
         setIndex(selectedIndex);
         setCharSelect(characters[selectedIndex].description);
+        insertUserStats({...characters[selectedIndex], image:img})
     };
 
     return (
@@ -117,7 +120,9 @@ export default function CreateCharacter() {
                                 </ul>
                             )}
                         </article>
-                        <Button id="charConfirm" className="Btn btn-secondary">
+                        <Button 
+                            id="charConfirm" 
+                            className="Btn btn-secondary">
                             Confirm Selection
                         </Button>
                     </div>

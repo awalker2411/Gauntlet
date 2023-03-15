@@ -4,14 +4,18 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Brute from '../../assets/images/characters/Brute.png'
+import { useState } from 'react';
 
-function UncontrolledExample() {
+
+function Profile({selectedIndex,img}) {
+    const [userStats, insertUserStats] = useState();
+
     return (
         <>
             <h3>
-                Welcome to your profile, Chris!
+                Welcome to your profile, 
             </h3>
-            <CreateCharacter />
+            <CreateCharacter insertUserStats={insertUserStats}/>
             <main
                 style={{
                     display: 'flex',
@@ -24,18 +28,13 @@ function UncontrolledExample() {
                 <p className='profileDescription'>
                     Below, you can view the stats from your most recent Arena match!
                 </p>
-                <Container>
+                <Container className='statsContainer'>
                     <Figure className='container'
                         style={{
                             marginTop: 50,
                         }}
                     >
-                        <Figure.Image
-                            width={300}
-                            height={180}
-                            alt="300x180"
-                            src={Brute}
-                        />
+                        <img src={Brute}/>
                     </Figure>
                     <h3 className='prevBattle'>
                         Previous Battle:
@@ -45,7 +44,7 @@ function UncontrolledExample() {
                             <Col xs={6}>
                                 User Stats:
                                 <p className='userStats'>
-                                    Health Points - 
+                                    {/* Health Points - {insertUserStats[selectedIndex].health} */}
                                 </p>
                                 <p className='userStats'> 
                                     Attack Points - 
@@ -77,4 +76,4 @@ function UncontrolledExample() {
     );
 }
 
-export default UncontrolledExample;
+export default Profile;

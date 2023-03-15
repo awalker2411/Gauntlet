@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Figure from 'react-bootstrap/Figure';
-import Velnias from '../../assets/vids/Velnias.mp4';
+import Velnias from '../../assets/images/characters/Velnias.png';
 import Brute from '../../assets/images/characters/Brute.png';
 import Button from 'react-bootstrap/esm/Button';
 import Thud from '../../assets/sounds/thudSound.wav';
@@ -40,9 +40,7 @@ export default function Gauntlet() {
                 <Col xs={6}>
                     <Figure>
                         <img
-                            width={500}
-                            height={500}
-                            alt="500x300"
+                            
                             src={Brute}
                         />
                     </Figure>
@@ -50,22 +48,11 @@ export default function Gauntlet() {
                 <Col
                     className=''
                     xs={6}>
-                    
-                        <video autoPlay loop muted
-                            style={{
-                                position: 'relative',
-                                width: "100%",
-                                left: "55%",
-                                top: "50%",
-                                height: "100%",
-                                objectFit: "fill",
-                                transform: "translate(-50%, -50%)",
-                                zIndex: "0"
-                            }}
-                        >
-                            <source src={Velnias} type="video/mp4" />
-                        </video>
-                    
+                    <Figure>
+                        <img
+                            
+                            src={Velnias}/>
+                    </Figure>
                 </Col>
             </Row>
             <Button

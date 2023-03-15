@@ -137,6 +137,10 @@ h3 {
   border-radius: 10%;
 }
 
+.statsContainer {
+  display: none;
+}
+
 /* Character creation modal */
 .charPar {
   font-size: 18px;
@@ -158,7 +162,11 @@ h3 {
 .arena {
   margin: 50px 0px 50px 0px;
   background-color:black;
-  height: 600px;
+}
+
+img {
+  height: 400px;
+  aspect-ratio: 1/1;
 }
 
 /* About Page */
@@ -170,6 +178,29 @@ h3 {
   margin-top: 50px;
 }
 
+
+@media screen and (max-width: 1000px) {
+  img {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .arena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .arena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 
 @media screen and (max-width:750px) {
   .howItWorks {
