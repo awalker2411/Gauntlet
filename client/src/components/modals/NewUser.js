@@ -7,11 +7,24 @@ import { LOGIN_USER } from '../../utils/mutations';
 import AuthService from '../../utils/auth'
 
 export default function NewUserModal() {
+    const [userFormData, setUserFormData] = useState({email: '', password: ''})
+    const [validated] = useState(false)
     const [show, setShow] = useState(false);
     // const [loginUser, {error}] = useMutation(LOGIN_USER)
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const handleLogin = (event) =>{
+        event.preventDefault()
+        const form = event.currentTarget
+        if (form.checkValidity)
+        handleClose()
+    }
+    
+    const handleSignup = () =>{
+        handleClose()
+    }
 
     return (
         <>
@@ -67,10 +80,10 @@ export default function NewUserModal() {
                     <Button variant="secondary" onClick={handleClose} className="loginBtn btn-secondary">
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose} id="loginBtn" className="loginBtn btn-secondary">
+                    <Button variant="primary" onClick={handleLogin} id="loginBtn" className="loginBtn btn-secondary">
                         Login
                     </Button>
-                    <Button className="d-none" variant="primary" onClick={handleClose} id="signupBtn">
+                    <Button className="d-none" variant="primary" onClick={handleSignup} id="signupBtn">
                         Sign Up
                     </Button>
                 </Modal.Footer>

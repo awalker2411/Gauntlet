@@ -1,12 +1,12 @@
 class Character{
-    constructor(health, attack, attackLow, attackHigh, defense, defenseLow, defenseHigh, speed){
+    constructor(health, attack, defense, speed){
         this.health = health
         this.attack = attack
-        this.attackLow = attackLow
-        this.attackHigh = attackHigh
+        this.attackLow = 1
+        this.attackHigh = 10
         this.defense = defense
-        this.defenseLow = defenseLow
-        this.defenseHigh = defenseHigh
+        this.defenseLow = 1
+        this.defenseHigh = 8
         this.speed = speed
     }
 
@@ -88,7 +88,7 @@ class Gauntlet{
             }
         }
     }
-
+    
     async combatWave(){
         this.waves++
         if(this.player1.health > 0 && this.enemy.health > 0){
@@ -124,4 +124,30 @@ class Gauntlet{
             console.log(`Your character made it to wave `+this.waves+`!`)
         }
     }
+
 }
+
+
+function createCharacter(characterType){
+    let player1;
+
+    switch(characterType){
+        case "Arcanist":
+            player1 = new Character(150, 40, 30, 10)
+        case "Brute":
+            player1 = new Character(600, 100, 20, 10)
+        case "Bulwark":
+            player1 = new Character(1000, 17.5, 50, 5)
+        case "Dread Knight":
+            player1 = new Character(200, 30, 30.5, 10)
+        case "Engineer":
+            player1 = new Character(100, 69, 17, 25)
+        case "Shadowblade":
+            player1 = new Character(50, 45, 10, 75)
+    }
+
+    const enemy = new Character(200, 20, 20, 20)
+
+    new Gauntlet(player1, enemy)
+}
+
