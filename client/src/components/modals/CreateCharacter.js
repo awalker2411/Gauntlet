@@ -67,6 +67,15 @@ export default function CreateCharacter({insertUserStats}) {
 
     useEffect(() => setCharSelect(characters[index].description), [])
 
+    const confirmCharacter = () => {
+        document.getElementById('statsContainer');
+
+        return(
+
+            this.state.statsContainer ? 'block' : 'none'
+            )
+    }
+
     const handleSelect = (selectedIndex, img) => {
         setIndex(selectedIndex);
         setCharSelect(characters[selectedIndex].description);
@@ -121,6 +130,7 @@ export default function CreateCharacter({insertUserStats}) {
                             )}
                         </article>
                         <Button 
+                            onClick={confirmCharacter}
                             id="charConfirm" 
                             className="Btn btn-secondary">
                             Confirm Selection

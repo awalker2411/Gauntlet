@@ -1,7 +1,7 @@
 {
   "name": "Gauntlet",
   "version": "1.0.0",
-  "homepage": "ADD HEROKU LINK HERE WHEN DEPLOYING",
+  "homepage": "https://gauntlet.herokuapp.com/",
   "description": "",
   "main": "server/server.js",
   "scripts": {
