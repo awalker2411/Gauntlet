@@ -7,12 +7,17 @@ const charSchema = new Schema({
             type: String,
         },
     ],
+    charType: [
+        {
+            type: String,
+        },
+    ],
     description: {
         type: String
     },
     image: {
         type: String
-    }
+    },
 });
 
 module.exports = charSchema;
