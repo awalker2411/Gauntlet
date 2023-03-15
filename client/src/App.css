@@ -112,7 +112,12 @@ h3 {
 .stats {
   background-color: #111111;
   border-radius: 5px;
+}
 
+.baseStats {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .profileDescription {
@@ -134,15 +139,36 @@ h3 {
 
 /* Character creation modal */
 .charPar {
-  font-size: 12px;
+  font-size: 18px;
 }
+
+#charName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111111;
+  color: #3ae410e5;  
+  border-bottom: 1px solid #3ae410e5;
+  position:relative;
+  font-size: 18px;
+}
+
 
 /* Arena Page */
 .arena {
-  margin: 50px;
+  margin: 50px 0px 50px 0px;
+  background-color:black;
+  height: 600px;
 }
 
-
+/* About Page */
+.aboutDevs {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 50px;
+}
 
 
 @media screen and (max-width:750px) {
@@ -152,6 +178,10 @@ h3 {
 
   .profileDescription {
     font-size: 22px;
+  }
+
+  #charConfirm {
+    font-size: 16px;
   }
 }
 
@@ -167,5 +197,9 @@ h3 {
 
   .profileDescription {
     font-size: 18px;
+  }
+
+  #charConfirm {
+    font-size: 12px;
   }
 }

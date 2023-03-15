@@ -3,13 +3,18 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Figure from 'react-bootstrap/Figure';
-import Velnias from '../../assets/images/characters/Velnias.png';
+import Velnias from '../../assets/vids/Velnias.mp4';
 import Brute from '../../assets/images/characters/Brute.png';
 import Button from 'react-bootstrap/esm/Button';
+import Thud from '../../assets/sounds/thudSound.wav';
 
 
 export default function Gauntlet() {
-    
+
+    function play () {
+        new Audio(Thud).play();
+    }
+
     return (
         <Container>
             <h2>
@@ -17,7 +22,7 @@ export default function Gauntlet() {
             </h2>
             <Dropdown>
                 <Dropdown.Toggle className="Btn" id="dropdown-button-dark-example1" variant="secondary">
-                    Select a character to send to the Arena
+                    Character Select
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu variant="dark">
@@ -40,26 +45,34 @@ export default function Gauntlet() {
                             alt="500x300"
                             src={Brute}
                         />
-                        
                     </Figure>
                 </Col>
                 <Col
                     className=''
                     xs={6}>
-                    <Figure>
-                        <img
-                            width={700}
-                            height={475}
-                            alt="700x300"
-                            src={Velnias}
-                        />
-                    </Figure>
+                    
+                        <video autoPlay loop muted
+                            style={{
+                                position: 'relative',
+                                width: "100%",
+                                left: "55%",
+                                top: "50%",
+                                height: "100%",
+                                objectFit: "fill",
+                                transform: "translate(-50%, -50%)",
+                                zIndex: "0"
+                            }}
+                        >
+                            <source src={Velnias} type="video/mp4" />
+                        </video>
+                    
                 </Col>
             </Row>
-            <Button 
-            variant="primary" 
-            // onClick={startBattle}
-            className="Btn btn-secondary"
+            <Button
+            onClick={play}
+                variant="primary"
+                // onClick={startBattle}
+                className="Btn btn-secondary"
             >
                 Begin Battle
             </Button>
