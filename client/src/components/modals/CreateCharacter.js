@@ -67,12 +67,12 @@ export default function CreateCharacter({insertUserStats}) {
 
     useEffect(() => setCharSelect(characters[index].description), [])
 
-    const confirmCharacter = () => {
+    const confirmCharacter = (e) => {
         document.getElementById('statsContainer');
 
         return(
 
-            this.state.statsContainer ? 'block' : 'none'
+            e.target.style.display = 'block'
             )
     }
 
