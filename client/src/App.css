@@ -22,6 +22,12 @@ a {
 
 a:hover {
   color:#910505;
+  cursor: pointer;
+}
+
+.title {
+  display: flex;
+  margin-left: 40px;
 }
 
 .navbar-brand:hover {
@@ -34,6 +40,16 @@ a:hover {
 
 .nav-link:hover {
   color: #910505;
+}
+
+.alignForm {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(27, 26, 26);
+  width: 300px;
+  height: 500px;
+  border-radius: 5%;
 }
 
 body {
@@ -100,8 +116,7 @@ h2 {
 /* Start of custom CSS for Profile page */
 h3 {
   display: flex;
-  justify-content: flex-start;
-  margin-left: 40px;
+  justify-content: center;
 }
 
 .prevBattle {
@@ -157,6 +172,12 @@ h3 {
   font-size: 18px;
 }
 
+.logSign {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
 
 /* Arena Page */
 .arena {

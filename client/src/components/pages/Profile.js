@@ -3,29 +3,28 @@ import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
+import Auth from '../../utils/auth';
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from '../../utils/queries';
 
 
 function Profile({selectedIndex,img}) {
+    const { loading, data } = useQuery(GET_ME);
+    const username = data?.me.username || [];
     const [userStats, insertUserStats] = useState({});
-
-    const { data } = useQuery(GET_ME)
-    let user
-
-    if(data){
-        user = data.username
-    }
 
     return (
         <>
-            {/* {user ? ( */}
-                {/* <> */}
-                    <h3>
-                    {/* Welcome to your profile, {data.username} */}
-                    </h3>
+            <div className="title">
+            {Auth.loggedIn() ? (
+            <h3 className="title">Welcome to your profile, {loading ? "" : username}</h3>
+            ) : (
+            <h2 className="title"> </h2>
+            )}
+            </div>
+            {username ? (
+                <>
                 <CreateCharacter insertUserStats={insertUserStats}/>
                 <main
                     style={{
@@ -57,7 +56,7 @@ function Profile({selectedIndex,img}) {
                                     <p className='userStats'>
                                         Health Points - {userStats.health}
                                     </p>
-                                    <p className='userStats'> 
+                                    <p className='userStats'>
                                         Attack Points - {userStats.attack}
                                     </p>
                                     <p className='userStats'>
@@ -70,23 +69,22 @@ function Profile({selectedIndex,img}) {
                                 <Col xs={6}>
                                     Character Stats:
                                     <p className='stats'>
-                                        Average Wave Reached - 
-                                    </p>
-                                    <p className='stats'> 
-                                        Highest Wave Reached - 
+                                        Average Wave Reached -
                                     </p>
                                     <p className='stats'>
-                                        Number of Arena Battles - 
+                                        Highest Wave Reached -
+                                    </p>
+                                    <p className='stats'>
+                                        Number of Arena Battles -
                                     </p>
                                 </Col>
                             </Row>
                         </Row>
                     </Container>
                 </main>
-                {/* </> */}
-            {/* ) : <CreateCharacter insertUserStats={insertUserStats}/>} */}
+                </>
+            ) : <CreateCharacter insertUserStats={insertUserStats}/>}
         </>
     );
 }
-
 export default Profile;

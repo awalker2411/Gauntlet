@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import FireNav2 from '../assets/animations/fireNav2.mp4'
-import Music from '../components/Audio'
+import FireNav2 from '../assets/animations/fireNav2.mp4';
+import Music from '../components/Audio';
+import Auth from '../utils/auth';
 
-const pages = ['Home', 'Profile', 'Gauntlet', 'About'];
+const pages = ['Home', 'Profile', 'Gauntlet', 'About', 'Login'];
 
 
 export default function Navbar() {
+    const logout = (event) => {
+        event.preventDefault();
+        Auth.logout();
+    };
+
     const [anchorElNav, setAnchorElNav] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
@@ -16,8 +22,6 @@ export default function Navbar() {
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
-
-
 
 
     return (
@@ -84,6 +88,9 @@ export default function Navbar() {
                             </li>
                             <li className="nav-item mx-5">
                                 <Music/>
+                            </li>
+                            <li className="nav-item mx-5">
+                                {Auth.loggedIn() ? (<a className="nav-link" onClick={logout}>Logout</a>) : (<a className="nav-link" href="/Login">Login</a>)}
                             </li>
                         </ul>
                     </div>
