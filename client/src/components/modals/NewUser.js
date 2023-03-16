@@ -49,9 +49,8 @@ export default function NewUserModal() {
             email: '',
             password: '',
         });
-        setSignupFormData({
-            username: ''
-        })
+
+        handleClose()
     }
 
     const handleSignUp = async(event) => {
@@ -60,9 +59,11 @@ export default function NewUserModal() {
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
-        }try{
-            const {data} = await addUser({variables: {...userFormData, ...signupFormData}});
-            AuthService.login(data.addUser.token)
+        }
+        try{
+            const {data} = await addUser({variables: {...signupFormData, ...userFormData}});
+            const token = data.addUser.token
+            AuthService.login(token)
         }catch(err){
             console.error(err);
             setShowAlert(true);
@@ -74,6 +75,8 @@ export default function NewUserModal() {
         setSignupFormData({
             username: ''
         })
+
+        handleClose()
     }
 
     const handleFormSubmit = async(event) => {
@@ -122,14 +125,13 @@ export default function NewUserModal() {
                 <Modal.Body style={{ backgroundColor: 'black' }}>
                     <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
                         <Form.Group className='mb-3 d-none' id="usernameInput" ref={usernameInputField}>
-                            <Form.Label htmlFor='username'>Username</Form.Label>
+                            <Form.Label style={{ color: '#3ae410e5' }}>Username</Form.Label>
                             <Form.Control
                                 type='text'
                                 placeholder='Your username'
                                 name='username'
                                 onChange={handleInputChange}
-                                value={userFormData.username}
-                                required
+                                value={signupFormData.username}
                             />
                             <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
                         </Form.Group>
