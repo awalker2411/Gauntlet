@@ -5,6 +5,8 @@ import Profile from './components/pages/Profile';
 import Arena from './components/pages/Arena';
 import About from './components/pages/About';
 import Navbar from './components/Navbar';
+import NewUser from './components/modals/NewUser';
+import Login from './components/modals/Login';
 import './App.css';
 import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
@@ -44,6 +46,8 @@ function App() {
                 <Route path="/Arena" element={<Arena />} />
                 <Route path="/Profile" element={<Profile />} />
                 <Route path="/About" element={<About />} />
+                <Route path="/NewUser" element={<NewUser />} />
+                <Route path="/Login" element={<Login />} />
               </Route>
             </Routes>
           </Router>

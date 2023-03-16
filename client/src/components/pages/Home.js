@@ -1,4 +1,3 @@
-import NewUserModal from '../modals/NewUser';
 import Figure from 'react-bootstrap/Figure';
 import CharacterGif from '../../assets/images/characters/Mercenaries-Gif.gif'
 
@@ -10,8 +9,6 @@ export default function Home() {
             <h2 className="mx-5 mb-5">
                 Welcome to Gauntlet, where we've developed an in-browser gaming experience!
             </h2>
-            <NewUserModal />
-
 
             <div
                 className="tutorial"
