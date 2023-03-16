@@ -51,20 +51,14 @@ function Profile({selectedIndex,img}) {
 
                     <article className="container">
                         <p className="tutorialLine">
-                            First, create an account if you don't have one already.
+                            Above, you can view all characters with a quick description about them along with their base stats. 
                         </p>
                         <p className="tutorialLine">
-                            You'll be able to select one of 6 characters, each with their own base stats.
-                        </p>
-                        <p className="tutorialLine">
-                            Once you've selected a character, you can enter the Arena to see how many waves of enemies your champion can take on.
-                        </p>
-                        <p className="tutorialLine">
-                            Be sure to keep tabs on your profile, as your stats will be there from the previous battle!
+                            This will give you a bit of insight as to how your character may perform within the arena. Choose wisely! 
                         </p>
                     </article>
                 </section>
-                
+
                     <Container id='statsContainer'>
                         <Figure className='container'
                             style={{

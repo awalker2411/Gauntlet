@@ -1,7 +1,7 @@
 {
   "name": "Gauntlet",
   "version": "1.0.0",
-  "homepage": "https://gauntlet.herokuapp.com/",
+  "homepage": "https://thegauntlet.herokuapp.com/",
   "description": "",
   "main": "server/server.js",
   "engines": {
