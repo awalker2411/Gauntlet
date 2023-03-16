@@ -29,6 +29,7 @@ export default function NewUserModal() {
     const handleInputChange = (event) => {
         const {name, value} = event.target
         setUserFormData({...userFormData, [name]: value})
+        setSignupFormData({...signupFormData, [name]: value})
     }
 
     const handleLogin = async(event) => {
