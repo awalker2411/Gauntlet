@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import { ADD_USER } from '../../utils/mutations';
-import AuthService from '../../utils/auth'
+import Auth from '../../utils/auth'
 import { useRef } from 'react';
 
 export default function NewUserModal() {
@@ -29,6 +29,7 @@ export default function NewUserModal() {
     const handleInputChange = (event) => {
         const {name, value} = event.target
         setUserFormData({...userFormData, [name]: value})
+        setSignupFormData({...signupFormData, [name]: value})
     }
 
     const handleLogin = async(event) => {
@@ -40,7 +41,7 @@ export default function NewUserModal() {
         }
         try {
             const { data } = await loginUser({ variables: {...userFormData}})
-            AuthService.login(data.login.token);
+            Auth.login(data.login.token);
         } catch (err) {
             console.error(err);
             setShowAlert(true);
@@ -49,31 +50,23 @@ export default function NewUserModal() {
             email: '',
             password: '',
         });
-        setSignupFormData({
-            username: ''
-        })
+
+        handleClose()
     }
 
     const handleSignUp = async(event) => {
         event.preventDefault();
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }try{
-            const {data} = await addUser({variables: {...userFormData, ...signupFormData}});
-            AuthService.login(data.addUser.token)
-        }catch(err){
-            console.error(err);
-            setShowAlert(true);
-        }
-        setUserFormData({
-            email: '',
-            password: '',
+        const mutationResponse = await addUser({
+            variables: {
+                username: signupFormData.username,
+                email: userFormData.email,
+                password: userFormData.password
+            },
         });
-        setSignupFormData({
-            username: ''
-        })
+        const token = mutationResponse.data.addUser.token;
+        Auth.login(token);
+
+        handleClose()
     }
 
     const handleFormSubmit = async(event) => {
@@ -122,14 +115,13 @@ export default function NewUserModal() {
                 <Modal.Body style={{ backgroundColor: 'black' }}>
                     <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
                         <Form.Group className='mb-3 d-none' id="usernameInput" ref={usernameInputField}>
-                            <Form.Label htmlFor='username'>Username</Form.Label>
+                            <Form.Label style={{ color: '#3ae410e5' }}>Username</Form.Label>
                             <Form.Control
                                 type='text'
                                 placeholder='Your username'
                                 name='username'
                                 onChange={handleInputChange}
-                                value={userFormData.username}
-                                required
+                                value={signupFormData.username}
                             />
                             <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
                         </Form.Group>
