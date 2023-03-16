@@ -1,155 +1,219 @@
-class Character{
-    constructor(health, attack, defense, speed){
+class Character {
+    constructor(health, attack, defense, speed) {
         this.health = health
         this.attack = attack
-        this.attackLow = 1
-        this.attackHigh = 10
         this.defense = defense
-        this.defenseLow = 1
-        this.defenseHigh = 8
         this.speed = speed
     }
+}
 
-    async attackVal(){
-        const min = this.attackLow
-        const max = this.attackHigh
-        let atkVal = Math.floor(Math.random()*(max - min + 1)) + min
+class Gauntlet {
+    constructor(player1, enemy) {
+
+        this.player1 = player1
+        this.enemy = enemy
+
+    }
+}
+
+function combatGame(gauntlet) {
+    let waves = localStorage.getItem('waves') || 0
+    let turn
+    let atkVal
+    let defVal
+    let valRan
+    let playerOneHealth = gauntlet.player1.health
+    let playerOneAttack = gauntlet.player1.attack
+    let playerOneDefense = gauntlet.player1.defense
+    let playerOneSpeed = gauntlet.player1.speed
+    let enemyHealth = gauntlet.enemy.health
+    let enemyAttack = gauntlet.enemy.attack
+    let enemyDefense = gauntlet.enemy.defense
+    let enemySpeed = gauntlet.enemy.speed
+
+
+    function attackVal(attack) {
+        const min = 1
+        const max = 10
+        const characterAtk = attack
+        valRan = Math.floor(Math.random() * (max - min + 1)) + min
+        atkVal = valRan * characterAtk
         return atkVal
     }
 
-    async defenseVal(){
-        const min = this.defenseLow
-        const max = this.defenseHigh
-        let defVal = Math.floor(Math.random()*(max - min + 1)) + min
+    function defenseVal(defense) {
+        const min = 1
+        const max = 8
+        const characterDef = defense
+        valRan = Math.floor(Math.random() * (max - min + 1)) + min
+        defVal = valRan * characterDef
         return defVal
     }
-}
 
-class Gauntlet{
-    constructor(player1, enemy){
-        this.player1 = player1
-        this.enemy = enemy
-        this.turn = 0
-        this.waves = 0
 
-        this.enemyScale_healthScale = 1.1
-        this.enemyScale_atkScale = 1.1
-        this.enemyScale_defScale = 1.1
-        this.enemyScale_spdScale = 1.1
-    }
 
-    async combatTurn(){
-        this.turn++
-        if(this.player1.speed > this.enemy.speed || this.player1.speed === this.enemy.speed){
-            let atkRoll = this.player1.attackVal()
-            let defRoll = this.enemy.attackVal()
-            if(this.player1.speed > 2*this.enemy.speed || this.player1.speed === 2*this.enemy.speed){
-                const secondAtkRoll = this.player1.attackVal()
-                atkRoll+= secondAtkRoll
+
+    function combatTurn(p1a, p1d, p1h, p1s, ea, ed, eh, es, turn) {
+        turn++
+        if (p1s > es || p1s === es) {
+            attackVal(p1a)
+            defenseVal(ed)
+            if (p1s > 2 * es || p1s === 2 * es) {
+                const secondAtkRoll = attackVal(p1a)
+                atkVal += secondAtkRoll
             }
-            let healthHit = atkRoll - defRoll
-            if(healthHit < 0){ //line 61
+            let healthHit = atkVal - defVal
+            if (healthHit < 0) { //line 61
                 healthHit = 0
             }
             // Need to add self damage for not breaking through defense; line 63
-            this.enemy.health-= healthHit
-            if(this.enemy.health > 0){
-                atkRoll = this.enemy.attackVal()
-                defRoll = this.enemy.defenseVal()
-                healthHit = atkRoll - defRoll
-                if(healthHit < 0){
+            eh -= healthHit
+            if (eh > 0) {
+                attackVal(ea)
+                defenseVal(p1d)
+                healthHit = atkVal - defVal
+                if (healthHit < 0) {
                     healthHit = 0
                 }
                 // Need to add self damage for not breaking through defense; line 79
-                this.player1.health-= healthHit
+                p1h -= healthHit
             }
-        }else{
-            let atkRoll = this.enemy.attackVal()
-            let defRoll = this.player1.defenseVal()
-            if(this.enemy.speed > 2*this.player1.speed || this.enemy.speed === 2*this.player1.speed){
-                const secondAtkRoll = this.enemy.attackVal()
-                atkRoll+= secondAtkRoll
+        } else {
+            attackVal(ea)
+            defenseVal(p1d)
+            if (es > 2 * p1s || es === 2 * p1s) {
+                const secondAtkRoll = attackVal(ea)
+                atkVal += secondAtkRoll
             }
-            let healthHit = atkRoll - defRoll
-            if(healthHit < 0){ //line 96
+            let healthHit = atkVal - defVal
+            if (healthHit < 0) { //line 96
                 healthHit = 0
             }
             // Need to add self damage for not breaking through defense; line 63
-            this.player1.health-= healthHit
-            if(this.player1.health > 0){
-                atkRoll = this.player1.attackVal()
-                defRoll = this.player1.defenseVal()
-                healthHit = atkRoll - defRoll
-                if(healthHit < 0){
+            p1h -= healthHit
+            if (p1h > 0) {
+                attackVal(p1a)
+                defenseVal(ed)
+                healthHit = atkVal - defVal
+                if (healthHit < 0) {
                     healthHit = 0
                 }
                 // Need to add self damage for not breaking through defense; line 79
-                this.enemy.health-= healthHit
+                eh -= healthHit
             }
         }
+        return turn, p1h, eh
     }
-    
-    async combatWave(){
-        this.waves++
-        if(this.player1.health > 0 && this.enemy.health > 0){
-            function fight(){
-                this.combatTurn()
-                if(this.player1.health > 0 && this.enemy.health > 0){
-                    fight()
+
+    function combatWave(waves, p1a, p1d, p1h, p1s, ea, ed, eh, es, turn) {
+        waves++
+        if (p1h > 0 && eh > 0) {
+            function fight(index) {
+                if (index > 1000){
+                    return;
+                }
+                index++
+                combatTurn(p1a, p1d, p1h, p1s, ea, ed, eh, es, turn)
+                if (p1h > 0 && eh > 0) {
+                    index++
+                    fight(index)
                 }
             }
-            fight()
+            fight(0)
         }
+
         let scaleEnemy = Math.floor(Math.random() * 4)
-        if(scaleEnemy === 0){
-            this.enemy.attack = this.enemy.attack*this.enemy.enemyScale_atkScale
-        }else if(scaleEnemy === 1){
-            this.enemy.health = this.enemy.health*this.enemy.enemyScale_healthScale
-        }else if(scaleEnemy === 2){
-            this.enemy.defense = this.enemy.defense*this.enemy.enemyScale_defScale
-        }else{
-            this.enemy.speed = this.enemy.speed*this.enemy.enemyScale_spdScale
+        if (scaleEnemy === 0) {
+            ea = ea * 1.1
+            return ea, waves
+        } else if (scaleEnemy === 1) {
+            eh = eh * 1.1
+            return eh, waves
+        } else if (scaleEnemy === 2) {
+            ed = ed * 1.1
+            return ed, waves
+        } else {
+            es = es * 1.1
+            return es, waves
         }
     }
 
-    async combatGame(){
-        if(this.player1.health > 0){
-            function game(){
-                this.combatWave()
-                if(this.player1.health > 0){
-                    game()
-                }
+    if (playerOneHealth > 0) {
+        function game(index) {
+            if (index > 50) {
+                return;
             }
-            game()
-            console.log(`Your character made it to wave `+this.waves+`!`)
-            localStorage.setItem('waves', this.waves)
+            index++
+            combatWave(waves, playerOneAttack, playerOneDefense, playerOneHealth, playerOneSpeed, enemyAttack, enemyDefense, enemyHealth, enemySpeed, turn)
+            if (gauntlet.player1.health > 0) {
+                index++
+                game(index)
+            }
         }
+        game(0)
+        console.log(`Your character made it to wave ` + waves + `!`)
+        localStorage.setItem('waves', waves)
     }
 }
 
 
-export default function createCharacter(characterType){
-    let waves = localStorage.getItem('waves')||0
+export default function createCharacter(characterType) {
     let player1;
+    let enemy
+    let arena
 
-    switch(characterType){
-        case "Arcanist":
-            player1 = new Character(150, 40, 30, 10)
-        case "Brute":
-            player1 = new Character(600, 100, 20, 10)
-        case "Bulwark":
-            player1 = new Character(1000, 17.5, 50, 5)
-        case "Dread Knight":
-            player1 = new Character(200, 30, 30.5, 10)
-        case "Engineer":
-            player1 = new Character(100, 69, 17, 25)
-        case "Shadowblade":
-            player1 = new Character(50, 45, 10, 75)
+    function getStats(characterType) {
+        switch (characterType) {
+            case "Arcanist":
+                player1 = new Character(150, 40, 30, 10)
+                enemy = new Character(200, 20, 20, 20)
+                arena = new Gauntlet(player1, enemy)
+                break;
+            case "Brute":
+                player1 = new Character(600, 100, 20, 10)
+                enemy = new Character(200, 20, 20, 20)
+                arena = new Gauntlet(player1, enemy)
+                break;
+            case "Bulwark":
+                player1 = new Character(1000, 17.5, 50, 5)
+                enemy = new Character(200, 20, 20, 20)
+                arena = new Gauntlet(player1, enemy)
+                break;
+            case "Dread Knight":
+                player1 = new Character(200, 30, 30.5, 10)
+                enemy = new Character(200, 20, 20, 20)
+                arena = new Gauntlet(player1, enemy)
+                break;
+            case "Engineer":
+                player1 = new Character(100, 69, 17, 25)
+                enemy = new Character(200, 20, 20, 20)
+                arena = new Gauntlet(player1, enemy)
+                break;
+            case "Shadowblade":
+                player1 = new Character(50, 45, 10, 75)
+                enemy = new Character(200, 20, 20, 20)
+                arena = new Gauntlet(player1, enemy)
+                break;
+            default:
+                player1 = new Character(200, 30, 30.5, 10)
+                enemy = new Character(200, 20, 20, 20)
+                arena = new Gauntlet(player1, enemy)
+        }
+        return arena
     }
 
-    const enemy = new Character(200, 20, 20, 20)
+    getStats(characterType)
+    console.log(enemy)
+    console.log(player1)
+    console.log(arena)
+    combatGame(arena)
 
-    const Arena = new Gauntlet(player1, enemy).combatGame()
-    console.log(Arena)
-    //Arena.combatGame()
+
+
+    // console.log(enemy)
+    // console.log(player1)
+
+    // combatGame(arena)
+    // console.log(arena)
+
 }
