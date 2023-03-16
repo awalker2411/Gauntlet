@@ -73,19 +73,19 @@ export default function Navbar() {
                             })}
 
                             <li className="nav-item mx-5">
-                                {Auth.loggedIn() ? (<a className="nav-link" href="/Arena">Arena</a>) : (<a className="nav-link" href="/Login">Arena</a>)}
+                                {Auth.loggedIn() ? (<Link className="nav-link" to="/Arena">Arena</Link>) : (<Link className="nav-link" to="/Login">Arena</Link>)}
                             </li>
                             <li className="nav-item mx-5">
-                                {Auth.loggedIn() ? (<a className="nav-link" href="/Profile">Profile</a>) : (<a className="nav-link" href="/Login">Profile</a>)}
+                                {Auth.loggedIn() ? (<Link className="nav-link" to="/Profile">Profile</Link>) : (<Link className="nav-link" to="/Login">Profile</Link>)}
                             </li>
                             <li className="nav-item mx-5">
-                                <a className="nav-link" href="/About">About</a>
+                                <Link className="nav-link" to="/About">About</Link>
                             </li>
                             <li className="nav-item mx-5">
                                 <Music/>
                             </li>
                             <li className="nav-item mx-5">
-                                {Auth.loggedIn() ? (<a className="nav-link" onClick={logout}>Logout</a>) : (<a className="nav-link" href="/Login">Login</a>)}
+                                {Auth.loggedIn() ? (<Link className="nav-link" onClick={logout}>Logout</Link>) : (<Link className="nav-link" to="/Login">Login</Link>)}
                             </li>
                         </ul>
                     </div>

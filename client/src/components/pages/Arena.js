@@ -127,7 +127,7 @@ export default function Gauntlet() {
                 </Col>
             </Row>
             <Col className='arenaRecord d-none' ref={postBattle}>
-                <span className='p-2'>You were able to reach wave {waves}</span>
+                <span className='p-2' ref={waves}></span>
 
                 <br></br>
                 <br></br>
