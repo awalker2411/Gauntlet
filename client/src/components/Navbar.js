@@ -73,15 +73,10 @@ export default function Navbar() {
                             })}
 
                             <li className="nav-item mx-5">
-                                <a
-                                    className="nav-link"
-                                    aria-current="page"
-                                    href="/Arena">
-                                    Arena
-                                </a>
+                                {Auth.loggedIn() ? (<a className="nav-link" href="/Arena">Arena</a>) : (<a className="nav-link" href="/Login">Arena</a>)}
                             </li>
                             <li className="nav-item mx-5">
-                                <a className="nav-link" href="/Profile">Profile</a>
+                                {Auth.loggedIn() ? (<a className="nav-link" href="/Profile">Profile</a>) : (<a className="nav-link" href="/Login">Profile</a>)}
                             </li>
                             <li className="nav-item mx-5">
                                 <a className="nav-link" href="/About">About</a>

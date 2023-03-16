@@ -104,7 +104,7 @@ export default function Gauntlet() {
                     ))}
                 </Dropdown.Menu>
             </Dropdown>
-            <p className="fs-3 d-none pt-3 text-bg-dark text-center d-inline p-2 text-bg-dark" ref={characterSelect}></p>
+            
             <Row className="arena">
                 <Col xs={6}>
                     <Figure>
@@ -113,19 +113,22 @@ export default function Gauntlet() {
                             src={Brute}
                         />
                     </Figure>
+                    <span className="charName" ref={characterSelect}></span>
                 </Col>
                 <Col
                     className=''
                     xs={6}>
                     <Figure>
                         <img
-                            
+                            className="velnias"
                             src={Velnias}/>
+                        <span className="charName" >Velnias</span>
                     </Figure>
                 </Col>
             </Row>
-            <Col className='fs-3 d-none pt-3 text-bg-dark text-center d-inline p-2 text-bg-dark' ref={postBattle}>
-                <span className='p-2' ref={waves}></span>
+            <Col className='arenaRecord d-none' ref={postBattle}>
+                <span className='p-2'>You were able to reach wave {waves}</span>
+
                 <br></br>
                 <br></br>
                 <span className='p-2'>NEW HIGHEST WAVE RECORD!</span>
@@ -133,8 +136,7 @@ export default function Gauntlet() {
             <Button
                 onClick={startGauntlet}
                 variant="primary"
-                // onClick={startBattle}
-                className="Btn btn-secondary"
+                className="Btn btn-secondary mt-3"
                 ref={gauntletBtn}
             >
                 Begin Battle
