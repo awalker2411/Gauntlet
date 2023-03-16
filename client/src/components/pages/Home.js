@@ -40,9 +40,9 @@ export default function Home() {
                         <p className="tutorialLine">
                             Once you've selected a character, you can enter the Arena to see how many waves of enemies your champion can take on.
                         </p>
-                        <p className="tutorialLine">
+                        {/* <p className="tutorialLine">
                             Be sure to keep tabs on your profile, as your stats will be there from the previous battle!
-                        </p>
+                        </p> */}
                     </article>
                 </section>
                 <Figure>
