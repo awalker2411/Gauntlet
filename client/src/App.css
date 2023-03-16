@@ -199,6 +199,21 @@ img {
   margin-top: 50px;
 }
 
+.text-location {
+  font-size: 80px;
+  font-weight: 600;
+  fill: #000000;
+  display: none;
+  text-align: center;
+  text-anchor: middle;
+}
+
+.clickable-areas {
+  fill: rgba(255, 255, 255, 0);
+  stroke-width: 0px;
+  stroke: #ff0000;
+}
+
 
 @media screen and (max-width: 1000px) {
   img {

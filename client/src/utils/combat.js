@@ -162,8 +162,8 @@ function combatGame(gauntlet) {
     }
     
     console.log(enemyHealth, playerOneHealth)
-    console.log(`Your character made it to wave ` + waves + `!`)
     localStorage.setItem('waves', waves)
+    console.log(`Your character made it to wave ` + waves + `!`)
 }
 
 
