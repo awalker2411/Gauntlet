@@ -152,9 +152,9 @@ h3 {
   border-radius: 10%;
 }
 
-/* #statsContainer {
+#statsContainer {
   display: none;
-} */
+}
 
 /* Character creation modal */
 .charPar {
@@ -188,6 +188,32 @@ h3 {
 img {
   height: 400px;
   aspect-ratio: 1/1;
+}
+
+.charName {
+  display: flex;
+  justify-content: center;
+  background-color: #111111;
+  margin-top: 50px;
+  font-size: 24px;
+}
+
+.velnias {
+  position:sticky
+}
+
+.figure {
+  display:inline
+}
+
+.arenaRecord {
+  display: flex;
+  justify-content: center;
+  background-color: #111111;
+}
+
+.p-2 {
+  font-size: 20px
 }
 
 /* About Page */
@@ -237,6 +263,20 @@ img {
   }
 }
 
+@media screen and (max-width:650px) {
+  .arena {
+    width: auto
+  }
+
+  img {
+    height:250px
+  }
+
+  .col-6 {
+    width: auto;
+  }
+}
+
 /* Adding custom media query for font size in nav bar at smaller resolutions */
 @media screen and (max-width:500px) {
   .navbar-brand {
@@ -253,5 +293,10 @@ img {
 
   #charConfirm {
     font-size: 12px;
+  }
+
+  .title {
+    margin-left: 20px;
+    font-size: 18px;
   }
 }

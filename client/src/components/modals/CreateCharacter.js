@@ -83,7 +83,7 @@ export default function CreateCharacter({insertUserStats}) {
             <Button 
                 ref={confirmationBtn}
                 onClick={() => setLgShow(true)} className="Btn btn-secondary">
-                Create New Character
+                Character Stats
             </Button>
             <Modal
                 size="lg"
@@ -92,14 +92,14 @@ export default function CreateCharacter({insertUserStats}) {
                 aria-labelledby="example-modal-sizes-title-lg"
             >
                 <Modal.Header
-                    style={{ backgroundColor: 'black' }}
+                    style={{ backgroundColor: '#303030' }}
                     closeButton
                 >
                     <Modal.Title
                         style={{ display: 'flex', justifyContent: 'center' }}
                         id="modalTitle"
                     >
-                        Create Your Character
+                        Character Stats
                     </Modal.Title>
                 </Modal.Header>
 
@@ -130,7 +130,7 @@ export default function CreateCharacter({insertUserStats}) {
                         <Button 
                             onClick={confirmCharacter}
                             id="charConfirm" 
-                            className="Btn btn-secondary">
+                            className="Btn btn-secondary d-none">
                             Confirm Selection
                         </Button>
                     </div>

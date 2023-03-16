@@ -35,9 +35,36 @@ function Profile({selectedIndex,img}) {
                         marginTop: 50,
                     }}
                     >
-                    {/* <p className='profileDescription'>
-                        Below, you can view the stats from your most recent Arena match!
-                    </p> */}
+                    <section
+                    className="card howItWorks"
+                    style={{
+                        marginTop: 100,
+                        display: 'flex',
+                        justifyContent: 'center',
+                    }}>
+
+                    <h3
+                        style={{ color: '#910505' }}
+                        className="card-header btn-primary">
+                        How it works:
+                    </h3>
+
+                    <article className="container">
+                        <p className="tutorialLine">
+                            First, create an account if you don't have one already.
+                        </p>
+                        <p className="tutorialLine">
+                            You'll be able to select one of 6 characters, each with their own base stats.
+                        </p>
+                        <p className="tutorialLine">
+                            Once you've selected a character, you can enter the Arena to see how many waves of enemies your champion can take on.
+                        </p>
+                        <p className="tutorialLine">
+                            Be sure to keep tabs on your profile, as your stats will be there from the previous battle!
+                        </p>
+                    </article>
+                </section>
+                
                     <Container id='statsContainer'>
                         <Figure className='container'
                             style={{
