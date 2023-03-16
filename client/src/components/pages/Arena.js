@@ -38,11 +38,11 @@ const characters = [
 
 
 export default function Gauntlet() {
-    const waves = localStorage.getItem('waves')||0
     const characterSelect = useRef(null)
     const characterImg = useRef(null)
     const postBattle = useRef(null)
     const gauntletBtn = useRef(null)
+    const waves = useRef(null)
     let characterName
     function play () {
         new Audio(Thud).play();
@@ -81,8 +81,11 @@ export default function Gauntlet() {
         play()
         createCharacter(characterName)
 
+        const wavesReached = localStorage.getItem('waves')
+        waves.current.innerHTML = 'Waves Defeated: '+wavesReached
         postBattle.current.classList.remove('d-none')
         gauntletBtn.current.classList.add('d-none')
+        
     }
 
 
@@ -122,7 +125,7 @@ export default function Gauntlet() {
                 </Col>
             </Row>
             <Col className='fs-3 d-none pt-3 text-bg-dark text-center d-inline p-2 text-bg-dark' ref={postBattle}>
-                <span className='p-2'>Wave: {waves}</span>
+                <span className='p-2' ref={waves}></span>
                 <br></br>
                 <br></br>
                 <span className='p-2'>NEW HIGHEST WAVE RECORD!</span>
