@@ -3,18 +3,23 @@ import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 function Profile({selectedIndex,img}) {
     const [userStats, insertUserStats] = useState({});
+    const [userState, useUserState] = useState('initialState');
+
+    useEffect(() => {
+        console.log(userState, '- Has Changed')
+    }, [userState])
 
     return (
         <>
             <h3>
                 Welcome to your profile, 
             </h3>
-            <CreateCharacter insertUserStats={insertUserStats}/>
+            <CreateCharacter insertUserStats={insertUserStats} />
             <main
                 style={{
                     display: 'flex',
