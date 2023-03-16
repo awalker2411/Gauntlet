@@ -17,8 +17,8 @@ class Gauntlet {
 }
 
 function combatGame(gauntlet) {
-    let waves = localStorage.getItem('waves') || 0
-    let turn
+    let waves = 0
+    let i
     let atkVal
     let defVal
     let valRan
@@ -53,8 +53,8 @@ function combatGame(gauntlet) {
 
 
 
-    function combatTurn(p1a, p1d, p1h, p1s, ea, ed, eh, es, turn) {
-        turn++
+    function combatTurn(p1a, p1d, p1h, p1s, ea, ed, eh, es) {
+
         if (p1s > es || p1s === es) {
             attackVal(p1a)
             defenseVal(ed)
@@ -102,19 +102,20 @@ function combatGame(gauntlet) {
                 eh -= healthHit
             }
         }
-        return turn, p1h, eh
+        playerOneHealth = p1h
+        enemyHealth = eh
+        return playerOneHealth, enemyHealth
     }
 
-    function combatWave(waves, p1a, p1d, p1h, p1s, ea, ed, eh, es, turn) {
-        waves++
-        if (p1h > 0 && eh > 0) {
+    function combatWave(p1a, p1d, p1h, p1s, ea, ed, eh, es) {
+        if (playerOneHealth > 0 && enemyHealth > 0) {
             function fight(index) {
                 if (index > 1000){
                     return;
                 }
                 index++
-                combatTurn(p1a, p1d, p1h, p1s, ea, ed, eh, es, turn)
-                if (p1h > 0 && eh > 0) {
+                combatTurn(p1a, p1d, playerOneHealth, p1s, ea, ed, enemyHealth, es)
+                if (playerOneHealth > 0 && enemyHealth > 0) {
                     index++
                     fight(index)
                 }
@@ -122,38 +123,47 @@ function combatGame(gauntlet) {
             fight(0)
         }
 
+        enemyHealth = eh
         let scaleEnemy = Math.floor(Math.random() * 4)
         if (scaleEnemy === 0) {
             ea = ea * 1.1
-            return ea, waves
+            enemyAttack = ea
+            return enemyAttack, playerOneHealth
         } else if (scaleEnemy === 1) {
             eh = eh * 1.1
-            return eh, waves
+            enemyHealth = eh
+            return enemyHealth, playerOneHealth
         } else if (scaleEnemy === 2) {
             ed = ed * 1.1
-            return ed, waves
+            enemyDefense = ed
+            return enemyDefense, playerOneHealth
         } else {
             es = es * 1.1
-            return es, waves
+            enemySpeed = es
+            return enemySpeed, playerOneHealth
         }
     }
 
     if (playerOneHealth > 0) {
         function game(index) {
-            if (index > 50) {
-                return;
+            waves = index
+            if (waves > 100) {
+                return i;
             }
-            index++
-            combatWave(waves, playerOneAttack, playerOneDefense, playerOneHealth, playerOneSpeed, enemyAttack, enemyDefense, enemyHealth, enemySpeed, turn)
-            if (gauntlet.player1.health > 0) {
-                index++
-                game(index)
+            waves++
+            combatWave(playerOneAttack, playerOneDefense, playerOneHealth, playerOneSpeed, enemyAttack, enemyDefense, enemyHealth, enemySpeed)
+            if (playerOneHealth > 0) {
+                waves++
+                game(waves)
             }
+            return waves
         }
         game(0)
-        console.log(`Your character made it to wave ` + waves + `!`)
-        localStorage.setItem('waves', waves)
     }
+    
+    console.log(enemyHealth, playerOneHealth)
+    console.log(`Your character made it to wave ` + waves + `!`)
+    localStorage.setItem('waves', waves)
 }
 
 
@@ -203,9 +213,7 @@ export default function createCharacter(characterType) {
     }
 
     getStats(characterType)
-    console.log(enemy)
-    console.log(player1)
-    console.log(arena)
+
     combatGame(arena)
 
 
