@@ -3,6 +3,7 @@ import Figure from 'react-bootstrap/Figure';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+
 import { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { GET_ME } from '../../utils/queries';
@@ -10,6 +11,7 @@ import { GET_ME } from '../../utils/queries';
 
 function Profile({selectedIndex,img}) {
     const [userStats, insertUserStats] = useState({});
+
     const { data } = useQuery(GET_ME)
     let user
 

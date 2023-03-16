@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import CharacterCarousel from '../data/Characters';
@@ -64,16 +64,12 @@ export default function CreateCharacter({insertUserStats}) {
     const [lgShow, setLgShow] = useState(false);
     const [charSelect, setCharSelect] = useState('');
     const [index, setIndex] = useState(0);
+    const confirmationBtn = useRef(null);
 
     useEffect(() => setCharSelect(characters[index].description), [])
 
     const confirmCharacter = () => {
-        document.getElementById('statsContainer');
-
-        return(
-
-            this.state.statsContainer ? 'block' : 'none'
-            )
+        confirmationBtn.current.classList.add('d-none')
     }
 
     const handleSelect = (selectedIndex, img) => {
@@ -84,7 +80,9 @@ export default function CreateCharacter({insertUserStats}) {
 
     return (
         <>
-            <Button onClick={() => setLgShow(true)} className="Btn btn-secondary">
+            <Button 
+                ref={confirmationBtn}
+                onClick={() => setLgShow(true)} className="Btn btn-secondary">
                 Create New Character
             </Button>
             <Modal
