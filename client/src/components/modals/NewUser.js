@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../../utils/mutations';
 import { ADD_USER } from '../../utils/mutations';
-import AuthService from '../../utils/auth'
+import Auth from '../../utils/auth'
 import { useRef } from 'react';
 
 export default function NewUserModal() {
@@ -41,7 +41,7 @@ export default function NewUserModal() {
         }
         try {
             const { data } = await loginUser({ variables: {...userFormData}})
-            AuthService.login(data.login.token);
+            Auth.login(data.login.token);
         } catch (err) {
             console.error(err);
             setShowAlert(true);
@@ -56,26 +56,15 @@ export default function NewUserModal() {
 
     const handleSignUp = async(event) => {
         event.preventDefault();
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        try{
-            const {data} = await addUser({variables: {...signupFormData, ...userFormData}});
-            const token = data.addUser.token
-            AuthService.login(token)
-        }catch(err){
-            console.error(err);
-            setShowAlert(true);
-        }
-        setUserFormData({
-            email: '',
-            password: '',
+        const mutationResponse = await addUser({
+            variables: {
+                username: signupFormData.username,
+                email: userFormData.email,
+                password: userFormData.password
+            },
         });
-        setSignupFormData({
-            username: ''
-        })
+        const token = mutationResponse.data.addUser.token;
+        Auth.login(token);
 
         handleClose()
     }

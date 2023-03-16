@@ -7,13 +7,45 @@ import Velnias from '../../assets/images/characters/Velnias.png';
 import Brute from '../../assets/images/characters/Brute.png';
 import Button from 'react-bootstrap/esm/Button';
 import Thud from '../../assets/sounds/thudSound.wav';
+import createCharacter from '../../utils/combat';
+
+const characters = [
+    {
+    id: 1, name: 'Brute'
+    },
+    {
+    id: 2, name: 'Engineer'
+    },
+    {
+    id: 3, name: 'DreadKnight'
+    },
+    {
+    id: 4, name: 'Bulwark'
+    },
+    {
+    id: 5, name: 'Shadowblade'
+    },
+    {
+    id: 6, name: 'Arcanist'
+    }
+]
 
 
 export default function Gauntlet() {
-
+    let characterName
     function play () {
         new Audio(Thud).play();
     }
+
+    function storeName(event){
+        characterName = event.target.innerHTML
+    }
+
+    function startGauntlet(){
+        play()
+        createCharacter(characterName)
+    }
+
 
     return (
         <Container>
@@ -26,14 +58,9 @@ export default function Gauntlet() {
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu variant="dark">
-                    <Dropdown.Item href="#/action-1">
-                        Brute
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">Engineer</Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">DreadKnight</Dropdown.Item>
-                    <Dropdown.Item href="#/action-4">Bulwark</Dropdown.Item>
-                    <Dropdown.Item href="#/action-4">Shadowblade</Dropdown.Item>
-                    <Dropdown.Item href="#/action-4">Arcanist</Dropdown.Item>
+                    {characters.map(item => (
+                        <Dropdown.Item key={item.id} onClick={storeName} >{item.name}</Dropdown.Item>
+                    ))}
                 </Dropdown.Menu>
             </Dropdown>
             <Row className="arena">
@@ -56,7 +83,7 @@ export default function Gauntlet() {
                 </Col>
             </Row>
             <Button
-            onClick={play}
+            onClick={startGauntlet}
                 variant="primary"
                 // onClick={startBattle}
                 className="Btn btn-secondary"

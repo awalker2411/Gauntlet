@@ -21,10 +21,10 @@ function Profile({selectedIndex,img}) {
 
     return (
         <>
-            {user ? (
-                <>
+            {/* {user ? ( */}
+                {/* <> */}
                     <h3>
-                    Welcome to your profile, {data.username}
+                    {/* Welcome to your profile, {data.username} */}
                     </h3>
                 <CreateCharacter insertUserStats={insertUserStats}/>
                 <main
@@ -83,8 +83,8 @@ function Profile({selectedIndex,img}) {
                         </Row>
                     </Container>
                 </main>
-                </>
-            ) : <CreateCharacter insertUserStats={insertUserStats}/>}
+                {/* </> */}
+            {/* ) : <CreateCharacter insertUserStats={insertUserStats}/>} */}
         </>
     );
 }

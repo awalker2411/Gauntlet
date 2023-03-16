@@ -122,13 +122,14 @@ class Gauntlet{
             }
             game()
             console.log(`Your character made it to wave `+this.waves+`!`)
+            localStorage.setItem('waves', this.waves)
         }
     }
-
 }
 
 
-function createCharacter(characterType){
+export default function createCharacter(characterType){
+    let waves = localStorage.getItem('waves')||0
     let player1;
 
     switch(characterType){
@@ -148,6 +149,7 @@ function createCharacter(characterType){
 
     const enemy = new Character(200, 20, 20, 20)
 
-    new Gauntlet(player1, enemy)
+    const Arena = new Gauntlet(player1, enemy).combatGame()
+    console.log(Arena)
+    //Arena.combatGame()
 }
-
